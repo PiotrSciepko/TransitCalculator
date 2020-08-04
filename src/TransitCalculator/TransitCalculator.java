@@ -1,5 +1,7 @@
 package TransitCalculator;
 
+import java.util.Arrays;
+
 public class TransitCalculator {
 
     int numberOfDays;
@@ -26,10 +28,21 @@ public class TransitCalculator {
         return numberOfU7 * unlimited7Fee / numberOfExpectedRides;
     }
 
+    public double[] getRidePrices() {
+
+        double[] priceOptionsPerRide = new double[3];
+
+        priceOptionsPerRide[0] = payPerRideFee * numberOfDays;
+        priceOptionsPerRide[1] = unlimited7Price();
+        priceOptionsPerRide[2] = unlimited30Fee;
+
+        return priceOptionsPerRide;
+    }
+
     public static void main(String[] args) {
 
         TransitCalculator t1 = new TransitCalculator(6, 14);
-        System.out.println(t1.unlimited7Price());
+        System.out.println(Arrays.toString(t1.getRidePrices()));
 
     }
 }
