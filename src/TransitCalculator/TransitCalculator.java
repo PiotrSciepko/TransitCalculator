@@ -20,13 +20,10 @@ public class TransitCalculator {
 
         int numberOfU7;
 
-        if (this.numberOfDays % 7 == 0) {
-            numberOfU7 = numberOfDays / 7;
-        } else {
-            numberOfU7 = numberOfDays / 7 + 1;
-        }
+        numberOfU7 = (numberOfDays % 7 == 0)? numberOfDays / 7 : numberOfDays / 7 + 1;
         return numberOfU7 * unlimited7Fee / numberOfExpectedRides;
     }
+
 
     public double[] getRidePrices() {
 
