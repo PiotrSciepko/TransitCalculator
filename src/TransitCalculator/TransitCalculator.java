@@ -32,17 +32,38 @@ public class TransitCalculator {
 
         double[] priceOptionsPerRide = new double[3];
 
-        priceOptionsPerRide[0] = payPerRideFee * numberOfDays;
+        priceOptionsPerRide[0] = payPerRideFee * numberOfExpectedRides;
         priceOptionsPerRide[1] = unlimited7Price();
-        priceOptionsPerRide[2] = unlimited30Fee;
+        priceOptionsPerRide[2] = unlimited30Fee / numberOfExpectedRides;
 
         return priceOptionsPerRide;
     }
 
+    public String getBestFare() {
+
+        double[] priceOptionsPerRide = getRidePrices();
+        double minFare = priceOptionsPerRide[0];
+        int minIndex = 0;
+        for(int i = 0;  i < priceOptionsPerRide.length; i++) {
+            if (priceOptionsPerRide[i] < minFare) {
+                minFare = priceOptionsPerRide[i];
+                minIndex = i;
+            }
+        }
+        if (minIndex == 0) {
+            return "You should get the Pay-per-ride option at " + minFare +" per ride.";
+        } else if (minIndex == 1) {
+            return "You should get the 7-day Unlimited option at " + minFare +" per ride.";
+        } else {
+            return "You should get the 30-day Unlimited option at " + minFare +" per ride.";
+        }
+    }
+
     public static void main(String[] args) {
 
-        TransitCalculator t1 = new TransitCalculator(6, 14);
+        TransitCalculator t1 = new TransitCalculator(22, 6);
         System.out.println(Arrays.toString(t1.getRidePrices()));
+        System.out.println(t1.getBestFare());
 
     }
 }
