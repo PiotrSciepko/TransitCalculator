@@ -1,4 +1,4 @@
-package transitcalculator;
+package com.PiotrS;
 
 import java.util.Arrays;
 
@@ -6,15 +6,14 @@ public class TransitCalculator {
 
     final int numberOfDays;
     final int numberOfExpectedRides;
+    final double payPerRideFee = 2.75;
+    final double unlimited7Fee = 33.0;
+    final double unlimited30Fee = 127.0;
 
     public TransitCalculator(int numberOfDays, int numberOfExpectedRides) {
         this.numberOfDays = numberOfDays;
         this.numberOfExpectedRides = numberOfExpectedRides;
     }
-
-    final double payPerRideFee = 2.75;
-    final double unlimited7Fee = 33.0;
-    final double unlimited30Fee = 127.0;
 
     public double unlimited7Price() {
 
