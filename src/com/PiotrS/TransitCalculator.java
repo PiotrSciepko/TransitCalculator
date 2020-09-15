@@ -37,7 +37,7 @@ public class TransitCalculator {
         double[] priceOptionsPerRide = getRidePrices();
         double minFare = priceOptionsPerRide[0];
         int minFareIndex = 0;
-        for(int i = 1;  i < priceOptionsPerRide.length; i++) {
+        for (int i = 1; i < priceOptionsPerRide.length; i++) {
             if (priceOptionsPerRide[i] < minFare) {
                 minFare = priceOptionsPerRide[i];
                 minFareIndex = i;
